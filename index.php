@@ -27,10 +27,10 @@
 
 	<form class="form-horizontal top-buffer" name="form" id="add_comment" action="insert_comment.php" method="POST">
 
-
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Период:</label>
             <div class="col-sm-10">
+
                 <label class="checkbox-inline">
                     <input type="checkbox" value="">День
                 </label>
