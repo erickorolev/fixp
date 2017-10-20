@@ -11,57 +11,86 @@
 </head>
 <body>
 
+<div class="container top-buffer">
+
+    <div class="row">
+
+        <div class="col-sm-4 col-sm-offset-4">
+            <h2 class="text-center">Отчет по кормлению</h2>
+        </div>
+
+    </div>
+
+</div>
+
 <div class="container background-black">
 
-<div class="row">
+	<form class="form-horizontal col-sm-offset-4" name="form" id="add_comment" action="insert_comment.php" method="POST">
 
-		<div class="col-sm-2 col-sm-offset-2 col-md-offset-3">
-			<p><img src="images/logo_big.png" alt="Honey Hunters logo"></p>
-		</div>
-		
-		
-</div>
 
-<div class="row">
-		
-		<div class="col-xs-12">
-			<p align="center"><img src="images/contact_icon.png" alt="Honey Hunters logo"></p>
-		</div>
-		
-</div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Период:</label>
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">День
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Неделя
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Месяц
+                </label>
+            </div>
+        </div>
 
-	<form name="form" id="add_comment" action="insert_comment.php" method="POST">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Студент:</label>
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Игорь
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Паша
+                </label>
+            </div>
+        </div>
 
-		<div class="row">
-			
-			<div class="col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-3">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Животные:</label>
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Обезьяны
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Львы
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Жирафы
+                </label>
+            </div>
+        </div>
 
-				<div class="form-group required">
-					<label for="name" class='control-label'>Имя</label>
-					<input type="text" class="form-control" id="name" required="required">
-				</div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Еда:</label>
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Бананы
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Мясо
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="">Трава
+                </label>
+            </div>
+        </div>
 
-				<div class="form-group required">
-					<label for="email" class='control-label'>E-mail</label>
-					<input type="email" class="form-control" id="email" required="required">
-				</div>
-		
-			</div>
-		
-			<div class="form-group required">
-				<div class="col-sm-4 col-md-3">
-					<label for="comment" class='control-label'>Комментарий</label>
-					<textarea class="form-control" rows="5" id="comment" required="required"></textarea>
-				</div>
-			</div>
-		
-		</div>
 
-		<div class="row top-buffer bottom-buffer">
-			<div class="col-sm-1 col-sm-offset-8">
-				<button type="submit" id="write" class="btn btn-default button">Записать</button>
-			</div>
-		</div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Составить</button>
+            </div>
+        </div>
 
 	</form>
 
@@ -71,7 +100,7 @@
 
 	<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
-				<h4 class="text-center">Выводим комментарии</h4>
+				<h3 class="text-center">Кормления</h3>
 			</div>
 	</div>
 	
@@ -84,14 +113,7 @@
 
 	<div class="row">
 
-		<div class="col-xs-3 col-sm-offset-2 col-md-offset-3">
-			<p><img src="images/logo_small.png" alt="Honey Hunters logo"></p>
-		</div>
-		
-		<div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-2 col-md-5 col-md-offset-1">
-			<img src="images/vk_icon.png" alt="Vkontake icon">
-			<img src="images/facebook_icon.png" alt="Facebook icon">
-		</div>
+        <p>Приложение Кормление. 2017</p>
 		
 	</div>
 
