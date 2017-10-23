@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="add_get_comments_ajax.js"></script>
+<script src="insert_report.js"></script>
 </head>
 <body>
 
@@ -25,32 +25,36 @@
 
 <div class="container background-black">
 
-	<form class="form-horizontal top-buffer" name="form" id="add_comment" action="insert_comment.php" method="POST">
+	<form class="form-horizontal top-buffer" name="form" id="build_report" action="insert_comment.php" method="POST">
 
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Период:</label>
             <div class="col-sm-10">
 
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="">День
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="">Неделя
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="">Месяц
+                <div class="radio-inline">
+                    <label><input type="radio" name="period">День</label>
+                </div>
+                <div class="radio-inline">
+                    <label><input type="radio" name="period">Неделя</label>
+                </div>
+                <div class="radio-inline">
+                    <label><input type="radio" name="period">Месяц</label>
+                </div>
+
+                <label class="radio-inline">
+                    <input id="date" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
                 </label>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Студент:</label>
+            <label class="control-label col-sm-2" for="student">Студент:</label>
             <div class="col-sm-10">
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Игорь
+                    <input type="checkbox" value="Игорь">Игорь
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Паша
+                    <input type="checkbox" value="Паша">Паша
                 </label>
             </div>
         </div>
@@ -228,10 +232,19 @@
             </div>
         </div>
     </div>
-	
 		
-	<div id="ajax_response"> </div>
-		
+</div>
+
+<div class="container">
+
+    <div class="row top-buffer">
+
+        <div class="col-sm-2">
+            <div id="ajax_response"> </div>
+        </div>
+
+    </div>
+
 </div>
 
 <div class="container background-black">
