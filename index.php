@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="insert_report.js"></script>
+<script src="ajax.js"></script>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
 
 <div class="container background-black">
 
-	<form class="form-horizontal top-buffer" name="form" id="build_report" action="insert_comment.php" method="POST">
+	<form class="form-horizontal top-buffer" name="form" id="build_report" action="build_report.php" method="POST">
 
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Период:</label>
@@ -40,10 +40,12 @@
                 <div class="radio-inline">
                     <label><input type="radio" name="period">Месяц</label>
                 </div>
-
+                <!--
                 <label class="radio-inline">
                     <input id="date" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
                 </label>
+                -->
+
             </div>
         </div>
 
@@ -51,10 +53,10 @@
             <label class="control-label col-sm-2" for="student">Студент:</label>
             <div class="col-sm-10">
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="Игорь">Игорь
+                    <input type="checkbox" id="student_1" value="Игорь">Игорь
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="Паша">Паша
+                    <input type="checkbox" id="student_2" value="Паша">Паша
                 </label>
             </div>
         </div>
@@ -232,7 +234,7 @@
             </div>
         </div>
     </div>
-		
+
 </div>
 
 <div class="container">

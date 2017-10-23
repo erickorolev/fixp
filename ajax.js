@@ -6,10 +6,20 @@ $(document).ready(function(){
         e.preventDefault(); // Предотвращаем отправку форму браузером
 
         // Присваиваем переменным значения полей формы
-        var student = $("#student").val();
+
+        if ($('#student_1').is(":checked"))
+        {
+            var student_1 = $('#student_1').val();
+        }
+
+        if ($('#student_2').is(":checked"))
+        {
+            var student_2 = $('#student_2').val();
+        }
+
         // Отправляем данные формы
         $.ajax({
-            dat"name=" + name+ "&email=" + email+ "&comment=" + comment,
+            data: "&student_1=" + student_1 + "&student_2=" + student_2,
             type: "POST",
             url: "build_report.php",
             success: function(response){
