@@ -24,10 +24,14 @@ mysqli_set_charset($conn,"utf8");
 // Подготавливаем данные для формирования SQL запросов
 if(!empty($_POST['student_1'])) {
     $student_1 = clean_input($_POST['student_1']);
+} else {
+    $student_1 = "false";
 }
 
 if(!empty($_POST['student_2'])) {
     $student_2 = clean_input($_POST['student_2']);
+} else {
+    $student_2 = "false";
 }
 
 // Формируем запрос на получение данных данных
@@ -44,17 +48,14 @@ JOIN students ON feedings.student_id = students.id
 JOIN animals ON feedings.animal_id = animals.id
 JOIN food ON feedings.food_id = food.id";
 
-if (!empty($student_1)) {
-    $sql.= "WHERE students.name = '$student_1'";
-    if (!empty($student_2)) {
-        $sql.= "AND WHERE students.name = '$student_2'";
+if (!empty($_POST['student_1'])) {
+    $sql.= " WHERE students.name = '$student_1'";
+    if (!empty($_POST['student_2'])) {
+        $sql.= " AND WHERE students.name = '$student_2'";
     }
-} else if (!empty($student_2)) {
-    $sql .= "WHERE students.name = '$student_2'";
+} else if (!empty($_POST['student_2'])) {
+    $sql .= " WHERE students.name = '$student_2'";
 }
-
-echo $student_1;
-echo $student_2;
 
 echo $sql;
 
