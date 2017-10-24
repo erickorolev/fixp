@@ -24,14 +24,34 @@ mysqli_set_charset($conn,"utf8");
 // Подготавливаем данные для формирования SQL запросов
 if(!empty($_POST['student_1'])) {
     $student_1 = clean_input($_POST['student_1']);
-} else {
-    $student_1 = "false";
 }
 
 if(!empty($_POST['student_2'])) {
     $student_2 = clean_input($_POST['student_2']);
-} else {
-    $student_2 = "false";
+}
+
+if(!empty($_POST['animals_1'])) {
+    $animals_1 = clean_input($_POST['animals_1']);
+}
+
+if(!empty($_POST['animals_2'])) {
+    $animals_2 = clean_input($_POST['animals_2']);
+}
+
+if(!empty($_POST['animals_3'])) {
+    $animals_3 = clean_input($_POST['animals_3']);
+}
+
+if(!empty($_POST['food_1'])) {
+    $food_1 = clean_input($_POST['food_1']);
+}
+
+if(!empty($_POST['food_2'])) {
+    $food_2 = clean_input($_POST['food_2']);
+}
+
+if(!empty($_POST['food_3'])) {
+    $food_3 = clean_input($_POST['food_3']);
 }
 
 // Формируем запрос на получение данных данных
@@ -46,18 +66,61 @@ FROM
   feedings
 JOIN students ON feedings.student_id = students.id
 JOIN animals ON feedings.animal_id = animals.id
-JOIN food ON feedings.food_id = food.id";
+JOIN food ON feedings.food_id = food.id
+WHERE feedings.amount > 0";
 
 if (!empty($_POST['student_1'])) {
-    $sql.= " WHERE students.name = '$student_1'";
+    $sql.= " AND students.name = '$student_1'";
     if (!empty($_POST['student_2'])) {
-        $sql.= " AND WHERE students.name = '$student_2'";
+        $sql.= " OR students.name = '$student_2'";
     }
-} else if (!empty($_POST['student_2'])) {
-    $sql .= " WHERE students.name = '$student_2'";
 }
 
-echo $sql;
+if (!empty($_POST['student_2'])) {
+    $sql .= " AND students.name = '$student_2'";
+}
+
+if (!empty($_POST['animals_1'])) {
+    $sql .= " AND animals.species = '$animals_1'";
+    if (!empty($_POST['animals_2'])) {
+        $sql .= " OR animals.species = '$animals_2'";
+    }
+    if (!empty($_POST['animals_3'])) {
+        $sql .= " OR animals.species = '$animals_3'";
+    }
+}
+
+if (!empty($_POST['animals_2'])) {
+    $sql .= " AND animals.species = '$animals_2'";
+    if (!empty($_POST['animals_3'])) {
+        $sql .= " OR animals.species = '$animals_3'";
+    }
+}
+
+if (!empty($_POST['animals_3'])) {
+    $sql .= " AND animals.species = '$animals_3'";
+}
+
+if (!empty($_POST['food_1'])) {
+    $sql .= " AND food.kind = '$food_1'";
+    if (!empty($_POST['food_2'])) {
+        $sql .= " OR food.kind = '$food_2'";
+    }
+    if (!empty($_POST['food_3'])) {
+        $sql .= " OR food.kind = '$food_3'";
+    }
+}
+
+if (!empty($_POST['food_2'])) {
+    $sql .= " AND food.kind = '$food_2'";
+    if (!empty($_POST['food_3'])) {
+        $sql .= " OR food.kind = '$food_3'";
+    }
+}
+
+if (!empty($_POST['food_3'])) {
+    $sql .= " AND food.kind = '$food_3'";
+}
 
 $result = mysqli_query($conn, $sql);
 

@@ -62,31 +62,31 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Животные:</label>
+            <label class="control-label col-sm-2" for="animals">Животные:</label>
             <div class="col-sm-10">
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Обезьяны
+                    <input type="checkbox" id="animals_1" value="Обезьяны">Обезьяны
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Львы
+                    <input type="checkbox" id="animals_2" value="Львы">Львы
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Жирафы
+                    <input type="checkbox" id="animals_3" value="Жирафы">Жирафы
                 </label>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Еда:</label>
+            <label class="control-label col-sm-2" for="food">Еда:</label>
             <div class="col-sm-10">
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Бананы
+                    <input type="checkbox" id="food_1" value="Бананы">Бананы
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Мясо
+                    <input type="checkbox" id="food_2" value="Мясо">Мясо
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" value="">Трава
+                    <input type="checkbox" id="food_3" value="Трава">Трава
                 </label>
             </div>
         </div>
