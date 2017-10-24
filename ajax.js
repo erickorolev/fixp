@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+    $("#date_group").hide();
+
+    $('[name="period"]').click(function() {
+        if($('#day').is(':checked')) {
+            $("#date_group").show();
+        } else {
+            $("#date_group").hide();
+        }
+    });
+
     // При отправки формы
     $("#build_report").submit(function(e) {
 
@@ -9,44 +19,59 @@ $(document).ready(function(){
 
         var postData = {};
 
-        if ($('#student_1').is(":checked"))
+        if ($("#day").is(":checked"))
         {
-            postData.student_1 = $('#student_1').val();
+            postData.period = $("#date").val();
         }
 
-        if ($('#student_2').is(":checked"))
+        if ($("#week").is(":checked"))
         {
-            postData.student_2 = $('#student_2').val();
+            postData.period = "week";
         }
 
-        if ($('#animals_1').is(":checked"))
+        if ($("#month").is(":checked"))
         {
-            postData.animals_1 = $('#animals_1').val();
+            postData.period = "month";
         }
 
-        if ($('#animals_2').is(":checked"))
+        if ($("#student_1").is(":checked"))
         {
-            postData.animals_2 = $('#animals_2').val();
+            postData.student_1 = $("#student_1").val();
         }
 
-        if ($('#animals_3').is(":checked"))
+        if ($("#student_2").is(":checked"))
         {
-            postData.animals_3 = $('#animals_3').val();
+            postData.student_2 = $("#student_2").val();
         }
 
-        if ($('#food_1').is(":checked"))
+        if ($("#animals_1").is(":checked"))
         {
-            postData.food_1 = $('#food_1').val();
+            postData.animals_1 = $("#animals_1").val();
         }
 
-        if ($('#food_2').is(":checked"))
+        if ($("#animals_2").is(":checked"))
         {
-            postData.food_2 = $('#food_2').val();
+            postData.animals_2 = $("#animals_2").val();
         }
 
-        if ($('#food_3').is(":checked"))
+        if ($("#animals_3").is(":checked"))
         {
-            postData.food_3 = $('#food_3').val();
+            postData.animals_3 = $("#animals_3").val();
+        }
+
+        if ($("#food_1").is(":checked"))
+        {
+            postData.food_1 = $("#food_1").val();
+        }
+
+        if ($("#food_2").is(":checked"))
+        {
+            postData.food_2 = $("#food_2").val();
+        }
+
+        if ($("#food_3").is(":checked"))
+        {
+            postData.food_3 = $("#food_3").val();
         }
 
         // Отправляем данные

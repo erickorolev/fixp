@@ -28,24 +28,28 @@
 	<form class="form-horizontal top-buffer" name="form" id="build_report" action="build_report.php" method="POST">
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Период:</label>
+            <label class="control-label col-sm-2" for="period">Период:</label>
             <div class="col-sm-10">
 
-                <div class="radio-inline">
-                    <label><input type="radio" name="period">День</label>
-                </div>
-                <div class="radio-inline">
-                    <label><input type="radio" name="period">Неделя</label>
-                </div>
-                <div class="radio-inline">
-                    <label><input type="radio" name="period">Месяц</label>
-                </div>
-                <!--
+                <label class="radio-inline">
+                    <input type="radio" name="period" id="day">День
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="period" id="week">Неделя
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="period" id="month">Месяц
+                </label>
+
+            </div>
+        </div>
+
+        <div class="form-group" id="date_group">
+            <label class="control-label col-sm-2" for="period">Дата:</label>
+            <div class="col-sm-10">
                 <label class="radio-inline">
                     <input id="date" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
                 </label>
-                -->
-
             </div>
         </div>
 

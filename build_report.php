@@ -122,6 +122,11 @@ if (!empty($_POST['food_3'])) {
     $sql .= " AND food.kind = '$food_3'";
 }
 
+if(!empty($_POST['period'])) {
+    $date = clean_input($_POST['period']);
+    $sql .= " AND feedings.date = '$date'";
+}
+
 $result = mysqli_query($conn, $sql);
 
 // Проверяем наличие данных
