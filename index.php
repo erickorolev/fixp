@@ -48,7 +48,7 @@
             <label class="control-label col-sm-2" for="period">Дата:</label>
             <div class="col-sm-10">
                 <label class="radio-inline">
-                    <input id="date" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                    <input id="date" type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
                 </label>
             </div>
         </div>

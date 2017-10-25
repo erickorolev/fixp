@@ -123,8 +123,19 @@ if (!empty($_POST['food_3'])) {
 }
 
 if(!empty($_POST['period'])) {
-    $date = clean_input($_POST['period']);
-    $sql .= " AND feedings.date = '$date'";
+    if ($_POST['period'] == "month") {
+        $period = (strtotime("-1 month"));
+        $date = date("Y-m-d", $period);
+        $sql .= " AND feedings.date > '$date'";
+    } else if ($_POST['period'] == "week") {
+        $period = (strtotime("-1 week"));
+        $date = date("Y-m-d", $period);
+        $sql .= " AND feedings.date > '$date'";
+    } else {
+        $date = clean_input($_POST['period']);
+        $sql .= " AND feedings.date = '$date'";
+    }
+
 }
 
 $result = mysqli_query($conn, $sql);
