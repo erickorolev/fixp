@@ -65,35 +65,3 @@ ALTER TABLE animals
 
 ALTER TABLE food
   ADD FOREIGN KEY (animal_id) REFERENCES animals(id);
-
--- Вид запросов, которые будут совершаться приложением
-
--- Выбрать все кормления, студент - Игорь.
-SELECT
-  feedings.date AS 'Дата',
-  students.name AS 'Студент',
-  animals.species AS 'Животное',
-  food.kind AS 'Еда',
-  feedings.amount AS 'Количество (кг)'
-FROM
-  feedings
-JOIN students ON feedings.student_id = students.id
-JOIN animals ON feedings.animal_id = animals.id
-JOIN food ON feedings.food_id = food.id
-WHERE
-  students.name = 'Игорь';
-
--- Посчитать сколько всего съедено в кормлениях, где студент - Игорь.
-SELECT
-  food.kind AS 'Еда',
-  SUM(feedings.amount) AS 'Количество (кг)'
-FROM
-  feedings
-  JOIN students ON feedings.student_id = students.id
-  JOIN animals ON feedings.animal_id = animals.id
-  JOIN food ON feedings.food_id = food.id
-WHERE
-feedings.date > 2017-10-18
-GROUP BY
-  food.kind;
-

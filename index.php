@@ -28,7 +28,7 @@
             <div class="col-sm-10">
 
                 <label class="radio-inline">
-                    <input type="radio" name="period" id="day">День
+                    <input type="radio" name="period" id="day" required>День
                 </label>
                 <label class="radio-inline">
                     <input type="radio" name="period" id="week">Неделя

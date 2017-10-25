@@ -70,55 +70,57 @@ JOIN food ON feedings.food_id = food.id
 WHERE feedings.amount > 0";
 
 if (!empty($_POST['student_1'])) {
-    $sql.= " AND students.name = '$student_1'";
     if (!empty($_POST['student_2'])) {
-        $sql.= " OR students.name = '$student_2'";
+        $sql.= " AND (students.name = '$student_1' OR students.name = '$student_2')";
+    } else {
+        $sql.= " AND students.name = '$student_1'";
     }
-}
-
-if (!empty($_POST['student_2'])) {
+} else if (!empty($_POST['student_2'])) {
     $sql .= " AND students.name = '$student_2'";
 }
 
 if (!empty($_POST['animals_1'])) {
-    $sql .= " AND animals.species = '$animals_1'";
     if (!empty($_POST['animals_2'])) {
-        $sql .= " OR animals.species = '$animals_2'";
+        if (!empty($_POST['animals_3'])) {
+            $sql .= " AND (animals.species = '$animals_1' OR animals.species = '$animals_2' OR animals.species = '$animals_3')";
+        } else {
+            $sql .= " AND (animals.species = '$animals_1' OR animals.species = '$animals_2')";
+        }
+    } else if (!empty($_POST['animals_3'])) {
+        $sql .= " AND (animals.species = '$animals_1' OR animals.species = '$animals_3')";
+    } else {
+        $sql .= " AND animals.species = '$animals_1'";
     }
+} else if (!empty($_POST['animals_2'])) {
     if (!empty($_POST['animals_3'])) {
-        $sql .= " OR animals.species = '$animals_3'";
+        $sql .= " AND (animals.species = '$animals_2' OR animals.species = '$animals_3')";
+    } else {
+        $sql .= " AND animals.species = '$animals_2'";
     }
-}
-
-if (!empty($_POST['animals_2'])) {
-    $sql .= " AND animals.species = '$animals_2'";
-    if (!empty($_POST['animals_3'])) {
-        $sql .= " OR animals.species = '$animals_3'";
-    }
-}
-
-if (!empty($_POST['animals_3'])) {
+} else if (!empty($_POST['animals_3'])) {
     $sql .= " AND animals.species = '$animals_3'";
 }
 
+
 if (!empty($_POST['food_1'])) {
-    $sql .= " AND food.kind = '$food_1'";
     if (!empty($_POST['food_2'])) {
-        $sql .= " OR food.kind = '$food_2'";
+        if (!empty($_POST['food_3'])) {
+            $sql .= " AND (food.kind = '$food_1' OR food.kind = '$food_2' OR food.kind = '$food_3')";
+        } else {
+            $sql .= " AND (food.kind = '$food_1' OR food.kind = '$food_2')";
+        }
+    } else if (!empty($_POST['food_3'])) {
+        $sql .= " AND (food.kind = '$food_1' OR food.kind = '$food_3')";
+    } else {
+        $sql .= " AND food.kind = '$food_1'";
     }
+} else if (!empty($_POST['food_2'])) {
     if (!empty($_POST['food_3'])) {
-        $sql .= " OR food.kind = '$food_3'";
+        $sql .= " AND (food.kind = '$food_2' OR food.kind = '$food_3')";
+    } else {
+        $sql .= " AND food.kind = '$food_2'";
     }
-}
-
-if (!empty($_POST['food_2'])) {
-    $sql .= " AND food.kind = '$food_2'";
-    if (!empty($_POST['food_3'])) {
-        $sql .= " OR food.kind = '$food_3'";
-    }
-}
-
-if (!empty($_POST['food_3'])) {
+} else if (!empty($_POST['food_3'])) {
     $sql .= " AND food.kind = '$food_3'";
 }
 
