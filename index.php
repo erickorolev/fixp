@@ -105,53 +105,13 @@
 
 </div>
 
-<div class="container top-buffer">
+<div class="container">
 
 	<div class="row">
+        <div class="col-sm-4">
         <h3>Кормления</h3>
+        </div>
 	</div>
-
-    <div class="row">
-
-        <div class="col-sm-2">
-
-            <div class="row">
-                <p>№</p>
-            </div>
-
-        </div>
-
-        <div class="col-sm-2">
-            <div class="row">
-                <p>Дата</p>
-            </div>
-        </div>
-
-        <div class="col-sm-2">
-            <div class="row">
-                <p>Студент</p>
-            </div>
-        </div>
-
-        <div class="col-sm-2">
-            <div class="row">
-                <p>Животные</p>
-            </div>
-        </div>
-
-        <div class="col-sm-2">
-            <div class="row">
-                <p>Еда</p>
-            </div>
-        </div>
-
-        <div class="col-sm-2">
-            <div class="row">
-                <p>Количество (кг)</p>
-            </div>
-        </div>
-
-    </div>
 
     <div id="ajax_response"> </div>
 
@@ -159,7 +119,7 @@
 
 <div class="container background-black">
 
-	<div class="row top-buffer">
+	<div class="row">
 
         <div class="col-sm-4 col-sm-offset-8">
             <p>Приложение Кормление 2017</p>

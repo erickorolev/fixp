@@ -148,6 +148,27 @@ $sum_grass = 0;
 if (mysqli_num_rows($result) > 0) {
     // Отображаем данные
 
+    echo '<div class="row">';
+    echo '<div class="col-sm-2">';
+    echo '<p>№</p>';
+    echo '</div>';
+    echo '<div class="col-sm-2">';
+    echo '<p>Дата</p>';
+    echo '</div>';
+    echo '<div class="col-sm-2">';
+    echo '<p>Студент</p>';
+    echo '</div>';
+    echo '<div class="col-sm-2">';
+    echo '<p>Животные</p>';
+    echo '</div>';
+    echo '<div class="col-sm-2">';
+    echo '<p>Еда</p>';
+    echo '</div>';
+    echo '<div class="col-sm-2">';
+    echo '<p>Количество (кг)</p>';
+    echo '</div>';
+    echo '</div>';
+
     $num_row = 0;
 
     while($row = mysqli_fetch_assoc($result)) {
@@ -156,34 +177,22 @@ if (mysqli_num_rows($result) > 0) {
 
         echo '<div class="row">';
         echo '<div class="col-sm-2">';
-        echo '<div class="row">';
         echo '<p>' . $num_row . '</p>';
         echo '</div>';
-        echo '</div>';
         echo '<div class="col-sm-2">';
-        echo '<div class="row">';
         echo '<p>' . $row["Дата"] . '</p>';
         echo '</div>';
-        echo '</div>';
         echo '<div class="col-sm-2">';
-        echo '<div class="row">';
         echo '<p>' . $row["Студент"] . '</p>';
         echo '</div>';
-        echo '</div>';
         echo '<div class="col-sm-2">';
-        echo '<div class="row">';
         echo '<p>' . $row["Животное"] . '</p>';
         echo '</div>';
-        echo '</div>';
         echo '<div class="col-sm-2">';
-        echo '<div class="row">';
         echo '<p>' . $row["Еда"] . '</p>';
         echo '</div>';
-        echo '</div>';
         echo '<div class="col-sm-2">';
-        echo '<div class="row">';
         echo '<p>' . $row["Количество (кг)"] . '</p>';
-        echo '</div>';
         echo '</div>';
         echo '</div>';
 
@@ -208,7 +217,9 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($conn);
 
 echo '<div class="row">';
+echo '<div class="col-sm-4">';
 echo '<h3>Всего съедено</h3>';
+echo '</div>';
 echo '</div>';
 echo '<div class="row">';
 echo '<div class="col-sm-2">';
