@@ -93,7 +93,7 @@ FROM
   JOIN animals ON feedings.animal_id = animals.id
   JOIN food ON feedings.food_id = food.id
 WHERE
-  feedings.date = 2017/10/19
+feedings.date > 2017-10-18
 GROUP BY
   food.kind;
 
