@@ -140,70 +140,107 @@ if(!empty($_POST['period'])) {
 
 $result = mysqli_query($conn, $sql);
 
+$sum_meat = 0;
+$sum_bananas = 0;
+$sum_grass = 0;
+
 // Проверяем наличие данных
 if (mysqli_num_rows($result) > 0) {
     // Отображаем данные
 
+    $num_row = 0;
+
     while($row = mysqli_fetch_assoc($result)) {
 
-        echo '<pre>'; print_r($row); echo '</pre>';
+        $num_row++;
 
-        // echo $row["Дата"];
-        // echo $// row["Студент"];
-        // echo $row["Животное"];
-        // echo $row["Еда"];
-        // echo $row["Количество (кг)"];
+        echo '<div class="row">';
+        echo '<div class="col-sm-2">';
+        echo '<div class="row">';
+        echo '<p>' . $num_row . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col-sm-2">';
+        echo '<div class="row">';
+        echo '<p>' . $row["Дата"] . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col-sm-2">';
+        echo '<div class="row">';
+        echo '<p>' . $row["Студент"] . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col-sm-2">';
+        echo '<div class="row">';
+        echo '<p>' . $row["Животное"] . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col-sm-2">';
+        echo '<div class="row">';
+        echo '<p>' . $row["Еда"] . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col-sm-2">';
+        echo '<div class="row">';
+        echo '<p>' . $row["Количество (кг)"] . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+
+        if($row["Еда"] == "мясо") {
+            $sum_meat += $row["Количество (кг)"];
+        }
+
+        if($row["Еда"] == "бананы") {
+            $sum_bananas += $row["Количество (кг)"];
+        }
+
+        if($row["Еда"] == "трава") {
+            $sum_grass += $row["Количество (кг)"];
+        }
+
     }
 } else {
-    echo "За этот период кормлений не было";
-}
-
-$sql_2 = "
-SELECT
-  food.kind AS 'Еда',
-  SUM(feedings.amount) AS 'Количество (кг)'
-FROM
-  feedings
-  JOIN students ON feedings.student_id = students.id
-  JOIN animals ON feedings.animal_id = animals.id
-  JOIN food ON feedings.food_id = food.id";
-
-if(!empty($_POST['period'])) {
-    if ($_POST['period'] == "month") {
-        $period = (strtotime("-1 month"));
-        $date = date("Y-m-d", $period);
-        $sql_2 .= " WHERE feedings.date > '$date' GROUP BY food.kind";
-    } else if ($_POST['period'] == "week") {
-        $period = (strtotime("-1 week"));
-        $date = date("Y-m-d", $period);
-        $sql_2 .= " WHERE feedings.date > '$date' GROUP BY food.kind";
-    } else {
-        $date = clean_input($_POST['period']);
-        $sql_2 .= " WHERE feedings.date = '$date' GROUP BY food.kind";
-    }
-}
-
-$result_2 = mysqli_query($conn, $sql_2);
-
-// Проверяем наличие данных
-if (mysqli_num_rows($result_2) > 0) {
-    // Отображаем данные
-
-    while($row = mysqli_fetch_assoc($result_2)) {
-
-        echo '<pre>'; print_r($row); echo '</pre>';
-
-        // echo $row["Дата"];
-        // echo $// row["Студент"];
-        // echo $row["Животное"];
-        // echo $row["Еда"];
-        // echo $row["Количество (кг)"];
-    }
-} else {
-    echo "За этот период кормлений не было";
+    echo "C указанными условиями кормлений не было";
 }
 
 // Отключаемся от базы данных
 mysqli_close($conn);
+
+echo '<div class="row">';
+echo '<h3>Всего съедено</h3>';
+echo '</div>';
+echo '<div class="row">';
+echo '<div class="col-sm-2">';
+echo '<p>Еда</p>';
+echo '</div>';
+echo '<div class="col-sm-2">';
+echo '<p>Количество (кг)</p>';
+echo '</div>';
+echo '</div>';
+echo '<div class="row">';
+echo '<div class="col-sm-2">';
+echo '<p>Мясо</p>';
+echo '</div>';
+echo '<div class="col-sm-2">';
+echo '<p>' . $sum_meat . '</p>';
+echo '</div>';
+echo '</div>';
+echo '<div class="row">';
+echo '<div class="col-sm-2">';
+echo '<p>Бананы</p>';
+echo '</div>';
+echo '<div class="col-sm-2">';
+echo '<p>' . $sum_bananas . '</p>';
+echo '</div>';
+echo '</div>';
+echo '<div class="row">';
+echo '<div class="col-sm-2">';
+echo '<p>Трава</p>';
+echo '</div>';
+echo '<div class="col-sm-2">';
+echo '<p>' . $sum_grass . '</p>';
+echo '</div>';
+echo '</div>';
 
 ?>

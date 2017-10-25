@@ -14,11 +14,7 @@
 <div class="container top-buffer">
 
     <div class="row">
-
-        <div class="col-sm-4">
-            <h2 class="text-center">Отчет по кормлению</h2>
-        </div>
-
+        <h2>Отчет по кормлению</h2>
     </div>
 
 </div>
@@ -95,7 +91,6 @@
             </div>
         </div>
 
-
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default">Составить</button>
@@ -108,148 +103,57 @@
 
 <div class="container top-buffer">
 
+</div>
+
+<div class="container top-buffer">
+
 	<div class="row">
-			<div class="col-sm-4">
-				<h3 class="text-center">Кормления</h3>
-			</div>
+        <h3>Кормления</h3>
 	</div>
 
     <div class="row">
+
         <div class="col-sm-2">
+
             <div class="row">
                 <p>№</p>
             </div>
-            <div class="row">
-                <p>1</p>
-            </div>
-            <div class="row">
-                <p>2</p>
-            </div>
-            <div class="row">
-                <p>3</p>
-            </div>
+
         </div>
+
         <div class="col-sm-2">
             <div class="row">
                 <p>Дата</p>
             </div>
-            <div class="row">
-                <p>18.10.2017</p>
-            </div>
-            <div class="row">
-                <p>19.10.2017</p>
-            </div>
-            <div class="row">
-                <p>20.10.2017</p>
-            </div>
         </div>
+
         <div class="col-sm-2">
             <div class="row">
                 <p>Студент</p>
             </div>
-            <div class="row">
-                <p>Игорь</p>
-            </div>
-            <div class="row">
-                <p>Игорь</p>
-            </div>
-            <div class="row">
-                <p>Паша</p>
-            </div>
         </div>
+
         <div class="col-sm-2">
             <div class="row">
                 <p>Животные</p>
             </div>
-            <div class="row">
-                <p>Львы</p>
-            </div>
-            <div class="row">
-                <p>Львы</p>
-            </div>
-            <div class="row">
-                <p>Обезьяны</p>
-            </div>
         </div>
+
         <div class="col-sm-2">
             <div class="row">
                 <p>Еда</p>
             </div>
-            <div class="row">
-                <p>Мясо</p>
-            </div>
-            <div class="row">
-                <p>Мясо</p>
-            </div>
-            <div class="row">
-                <p>Бананы</p>
-            </div>
         </div>
+
         <div class="col-sm-2">
             <div class="row">
                 <p>Количество (кг)</p>
             </div>
-            <div class="row">
-                <p>5</p>
-            </div>
-            <div class="row">
-                <p>5</p>
-            </div>
-            <div class="row">
-                <p>1</p>
-            </div>
         </div>
 
     </div>
 
-    <div class="row">
-        <div class="col-sm-4">
-            <h3 class="text-center">Всего съедено</h3>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="row">
-                <p>Еда</p>
-            </div>
-            <div class="row">
-                <p>Мясо</p>
-            </div>
-            <div class="row">
-                <p>Трава</p>
-            </div>
-            <div class="row">
-                <p>Бананы</p>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="row">
-                <p>Количество (кг)</p>
-            </div>
-            <div class="row">
-                <p>9</p>
-            </div>
-            <div class="row">
-                <p>0</p>
-            </div>
-            <div class="row">
-                <p>12</p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div class="container">
-
-    <div class="row top-buffer">
-
-        <div class="col-sm-2">
-            <div id="ajax_response"> </div>
-        </div>
-
-    </div>
+    <div id="ajax_response"> </div>
 
 </div>
 
