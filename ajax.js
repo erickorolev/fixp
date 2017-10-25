@@ -1,24 +1,16 @@
+
+// Инструкции обмена данными с сервером через ajax
 $(document).ready(function(){
-
-    $("#date_group").hide();
-
-    $('[name="period"]').click(function() {
-        if($('#day').is(':checked')) {
-            $("#date_group").show();
-        } else {
-            $("#date_group").hide();
-        }
-    });
 
     // При отправки формы
     $("#build_report").submit(function(e) {
 
         e.preventDefault(); // Предотвращаем отправку форму браузером
 
-        // Присваиваем переменным значения полей формы
-
+        // Вводим объект, куда будем собирать данные введенные пользователем
         var postData = {};
 
+        // Проверяем, какие условия формы задал пользователей и размещаем выбранные в свойства в объект с данными
         if ($("#day").is(":checked"))
         {
             postData.period = $("#date").val();
@@ -74,13 +66,12 @@ $(document).ready(function(){
             postData.food_3 = $("#food_3").val();
         }
 
-        // Отправляем данные
+        // Отправляем данные и получаем ответ, который размещаем в указанном контейнере
         $.ajax({
             data: postData,
             type: "POST",
             url: "build_report.php",
             success: function(response){
-                // Размещаем ответ в контейнер
                 $("#ajax_response").html(response);
             }
         });

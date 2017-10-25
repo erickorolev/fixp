@@ -1,5 +1,6 @@
 <?php
 
+// Файл с реквизитами подключения к базе
 require 'db_login.php';
 
 // Функция для преобразования введенных пользователем данных в целях безопасности и избавления от сторонних элементов.
@@ -54,7 +55,11 @@ if(!empty($_POST['food_3'])) {
     $food_3 = clean_input($_POST['food_3']);
 }
 
-// Формируем запрос на получение данных данных
+if(!empty($_POST['period'])) {
+    $period = clean_input($_POST['period']);
+}
+
+// Шаблон запроса, который далее будет дополняться в зависимости от выбора пользователя
 $sql = "
 SELECT
   feedings.date AS 'Дата',
@@ -69,6 +74,9 @@ JOIN animals ON feedings.animal_id = animals.id
 JOIN food ON feedings.food_id = food.id
 WHERE feedings.amount > 0";
 
+// Далее идут дополнения к запросу, в зависимости от выбора пользователя
+
+// Добавляем к запросу условия по имени студентов
 if (!empty($_POST['student_1'])) {
     if (!empty($_POST['student_2'])) {
         $sql.= " AND (students.name = '$student_1' OR students.name = '$student_2')";
@@ -79,6 +87,7 @@ if (!empty($_POST['student_1'])) {
     $sql .= " AND students.name = '$student_2'";
 }
 
+// Добавляем к запросу условия по виду животных
 if (!empty($_POST['animals_1'])) {
     if (!empty($_POST['animals_2'])) {
         if (!empty($_POST['animals_3'])) {
@@ -101,7 +110,7 @@ if (!empty($_POST['animals_1'])) {
     $sql .= " AND animals.species = '$animals_3'";
 }
 
-
+// Добавляем к запросу условия по видам еды
 if (!empty($_POST['food_1'])) {
     if (!empty($_POST['food_2'])) {
         if (!empty($_POST['food_3'])) {
@@ -124,32 +133,35 @@ if (!empty($_POST['food_1'])) {
     $sql .= " AND food.kind = '$food_3'";
 }
 
+// Добавляем к запросу условия временного периода или даты
 if(!empty($_POST['period'])) {
-    if ($_POST['period'] == "month") {
-        $period = (strtotime("-1 month"));
-        $date = date("Y-m-d", $period);
+    if ($period == "month") {
+        $month = (strtotime("-1 month"));
+        $date = date("Y-m-d", $month);
         $sql .= " AND feedings.date > '$date'";
-    } else if ($_POST['period'] == "week") {
-        $period = (strtotime("-1 week"));
-        $date = date("Y-m-d", $period);
+    } else if ($period == "week") {
+        $week = (strtotime("-1 week"));
+        $date = date("Y-m-d", $week);
         $sql .= " AND feedings.date > '$date'";
     } else {
-        $date = clean_input($_POST['period']);
+        $date = $period;
         $sql .= " AND feedings.date = '$date'";
     }
 
 }
 
+// Отправляем запрос базе данных и получаем ответ
 $result = mysqli_query($conn, $sql);
 
+// Вводим переменные, куда будем считать количество видов еды для раздела "всего съедено"
 $sum_meat = 0;
 $sum_bananas = 0;
 $sum_grass = 0;
 
-// Проверяем наличие данных
+// Проверяем, существуют ли данные по введенным пользователем условиям
 if (mysqli_num_rows($result) > 0) {
-    // Отображаем данные
 
+    // Выводим шапку с названием столбцов
     echo '<div class="row">';
     echo '<div class="col-sm-2">';
     echo '<p>№</p>';
@@ -171,6 +183,7 @@ if (mysqli_num_rows($result) > 0) {
     echo '</div>';
     echo '</div>';
 
+    // Вводим переменную для подсчета количества строк отчета
     $num_row = 0;
 
     while($row = mysqli_fetch_assoc($result)) {
@@ -198,15 +211,12 @@ if (mysqli_num_rows($result) > 0) {
         echo '</div>';
         echo '</div>';
 
+        // Узнаем, какой вид еды выведен в этой итерации цикла и прибавляем его количество в свою переменную
         if($row["Еда"] == "мясо") {
             $sum_meat += $row["Количество (кг)"];
-        }
-
-        if($row["Еда"] == "бананы") {
+        } else if ($row["Еда"] == "бананы") {
             $sum_bananas += $row["Количество (кг)"];
-        }
-
-        if($row["Еда"] == "трава") {
+        } else if($row["Еда"] == "трава") {
             $sum_grass += $row["Количество (кг)"];
         }
 
@@ -218,6 +228,7 @@ if (mysqli_num_rows($result) > 0) {
 // Отключаемся от базы данных
 mysqli_close($conn);
 
+// Выводим раздел "Всего съедено", в который вставляем результат подсчета по типам еды
 echo '<div class="row">';
 echo '<div class="col-sm-4">';
 echo '<h3>Всего съедено</h3>';

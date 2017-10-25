@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="form_constructor.js"></script>
 <script src="ajax.js"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
 
 </div>
 
-<div class="container background-black">
+<div class="container background-green">
 
 	<form class="form-horizontal top-buffer" name="form" id="build_report" action="build_report.php" method="POST">
 
@@ -117,12 +118,12 @@
 
 </div>
 
-<div class="container background-black">
+<div class="container background-green">
 
 	<div class="row">
 
         <div class="col-sm-4 col-sm-offset-8">
-            <p>Приложение Кормление 2017</p>
+            <p>Приложение <strong>Кормление</strong> 2017</p>
         </div>
 
 	</div>
