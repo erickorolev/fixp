@@ -1,7 +1,7 @@
 <?php
 
 // Файл с реквизитами подключения к базе
-require 'db_login.php';
+require 'config.php';
 
 // Функция для преобразования введенных пользователем данных в целях безопасности и избавления от сторонних элементов.
 function clean_input($data) {
@@ -62,7 +62,7 @@ if(!empty($_POST['period'])) {
 // Шаблон запроса, который далее будет дополняться в зависимости от выбора пользователя
 $sql = "
 SELECT
-  feedings.date AS 'Дата',
+  DATE_FORMAT(feedings.date, '%d.%m.%Y') AS 'Дата',
   students.name AS 'Студент',
   animals.species AS 'Животное',
   food.kind AS 'Еда',

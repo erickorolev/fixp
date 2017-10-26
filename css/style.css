@@ -6,6 +6,10 @@
 	margin-top:20px; 
 }
 
+.bottom-buffer {
+	margin-bottom:20px;
+}
+
 .form-group.required .control-label:after { 
 	content:"*";
 	color:red;
@@ -13,14 +17,4 @@
 	font-size: 20px;
 	margin-left: 3px;
 	position: absolute;
-}
-
-.bottom-buffer { 
-	margin-bottom:20px; 
-}
-
-.button { 
-	background-color: rgb(190, 57, 59);
-	color: white;
-	border-style: hidden;
 }
